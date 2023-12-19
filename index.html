@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200&family=Roboto:wght@100;300;400;500;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Mulish:wght@200&family=Roboto:wght@100;300;400;500;700&family=Young+Serif&display=swap');
+
+:root{
+    --main-color: #ffe600;
+    --black: #13131a;
+    --bg:#010103;
+    --border: .1rem solid rgba(255,255,255,.3);
+}
+
+
+*{
+    font-family: 'Roboto', sans-serif;
+    margin:0; padding:0;
+    box-sizing: border-box;
+    outline: none; border:none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: .2s linear;
+}
+
+html{
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-padding-top: 9rem;
+    scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar{
+    width: .8rem;
+}
+
+html::-webkit-scrollbar-track{
+    background: transparent;
+}
+
+html::-webkit-scrollbar-track{
+    background: #fff;
+    border-radius: 5rem;
+}
+
+body{
+    background: var(--bg);
+}
+
+section{
+    padding: 2rem 7%;
+}
+
+.heading{
+    text-align: center;
+    color: transparent;
+    text-transform: uppercase;
+    padding-bottom: 4.5rem;
+    font-size: 50px;
+    -webkit-text-stroke: 3px #fff;
+}
+
+.heading span{
+    color: transparent;
+    text-transform: uppercase;
+}
+
+.btn{
+    margin-top: 1rem;
+    display: inline-block;
+    padding: .9rem 2rem;
+    font-size: 1.7rem;
+    color: #010103;
+    background: var(--main-color);
+    cursor: pointer;
+}
+
+.btn:hover{
+    letter-spacing: .1rem;
+}
+
+.header{
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:1.5rem 7%;
+    border-bottom: var(--border);
+    position: fixed;
+    top:0; left: 0; right: 0;
+    z-index: 1000;
+}
+
+.header .logo img{
+    height: 13rem;
+}
+
+.header .nav a{
+    margin:0 1rem;
+    font-size: 1.6rem;
+    color: #fff;
+}
+
+.header .nav a:hover{
+    color:var(--main-color);
+    border-bottom: .1rem solid var(--main-color);
+    padding-bottom: .5rem;
+}
+
+.header .icons div{
+    color: #fff;
+    cursor: pointer;
+    font-size: 2.5rem;
+    margin-left:  2rem;
+}
+
+.header .icons div:hover{
+    color: var(--main-color);
+
+}
+
+#menu-btn{
+    display: none;
+}
+
+.header .cart-items-container{
+    position: absolute;
+    top:100%; right: -100%;
+    height: calc(100vh - 9.5rem);
+    width: 35rem;
+    background: #fff;
+    padding:0 1.5;
+}
+
+.header .cart-items-container.active{
+    right: 0;
+}
+
+.header .cart-items-container .cart-item{
+    position: relative;
+    margin:2rem 0;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.header .cart-items-container .cart-item .fa-times{
+    position: absolute;
+    top: 1rem; right: 1rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--black);
+
+}
+
+.header .cart-items-container .cart-item .fa-times:hover{
+    color: var(--main-color);
+}
+
+.header .cart-items-container .cart-item img{
+    height: 7rem;
+}
+
+.header .cart-items-container .cart-item img .content h3{
+    font-size: 2rem;
+    color: var(--black);
+    padding-bottom: .5rem;
+}
+
+.header .cart-items-container .cart-item img .content .price{
+    font-size: 1.5rem;
+    color: var(--main-color)
+}
+
+.header .cart-items-container .btn{
+    width: 100%;
+    text-align: center;
+}
+
+.home{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background:url(homebackground.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.home .content{
+    max-width: 70rem;
+}
+
+.home .content h3{
+    font-size: 6rem;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.home .content p{
+    font-size: 2rem;
+    font-weight: lighter;
+    line-height: 1.8;
+    padding: 1rem 0;
+    color: #fff;
+}
+
+.about .row{
+    display: flex;
+    align-items:center;
+    background: var(--black);
+    flex-wrap: wrap;
+}
+
+.about .row .image{
+    flex:1 1 40rem;
+    
+}
+
+.about .row .image img{
+    width: 80%;
+    
+}
+
+.about .row .content{
+    flex:1 1 45rem;
+    padding: 2rem;
+}
+
+.about .row .content h3{
+    font-size: 3rem;
+    color: #fff;
+
+}
+
+.about .row .content p{
+    font-size: 2rem;
+    color: #ccc;
+    padding: 1rem 0;
+    line-height: 1.8;
+}
+
+.products .box-container{
+    display: flex;
+    grid-template-columns: repeat(auto fit, minmax(30rem, 1fr));
+    gap:2rem;
+}
+
+.products .box-container .box{
+    padding: 7rem;
+    text-align: center;
+    border: var(--border);
+}
+
+.products .box-container .box img{
+    height: 10rem;
+}
+
+.products .box-container .box h3{
+    color: #fff;
+    font-size: 2rem;
+    padding: 1rem 0;
+}
+
+.products .box-container .box .price{
+    color: #fff;
+    font-size: 2.5rem;
+    padding: .5rem 0;
+
+}
+
+.products .box-container .box:hover{
+    background: #fff;
+}
+
+.products .box-container .box:hover > *{
+    color: var(--black);
+}
+
+.faq .container{
+    margin: 0 0px;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.faq .container .tab{
+    position: relative;
+    background: #141313;
+    padding: 0 20px 20px;
+    box-shadow: 0 15px 25px rgba(0,0,0,0,0.5);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.faq .container .tab input{
+    appearance: none;
+}
+
+.faq .container .tab label{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+.faq .container .tab label::after{
+    content: "+";
+    position: absolute;
+    right: 20px;
+    font-size: 2em;
+    color: rgba(0,0,0,0,0.1);
+    transition: transform 1s;
+}
+
+.faq .container .tab:hover label::after{
+    color: var(--main-color);
+
+}
+
+.faq .container .tab input:checked ~ label::after{
+    transform: rotate(135deg);
+
+}
+
+.faq .container .tab label h2{
+    width: 40px;
+    height: 40px;
+    background: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff7f7;
+    font-size: 1.25em;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.faq .container .tab:nth-child(1) label h2{
+    background: linear-gradient(); /*--- last progress --*/
+}
+
+.faq .container .tab label h3{
+    position: relative;
+    font-weight: 500;
+    color: #fff;
+    z-index: 10;
+}
+
+.faq .container .tab .content{
+    max-height: 0;
+    transition: 1s;
+    overflow: hidden;
+
+}
+
+.faq .container .tab input:checked ~ .content{
+    max-height: 100vh;
+}
+
+.faq .container .tab .content p{
+    position: relative;
+    padding: 10px 0;
+    color: #ffffff;
+    z-index: 10;
+}
+
+.faq .container .tab input:checked ~ .content p{
+    color: rgb(248, 214, 20);
+}
+
+
+.faq .container .heading{
+    margin-left: 77rem;
+}
+
+.faq .container .tab h2{
+    color: #fff;
+    font-size: 22px;
+}
+
+.faq .container .tab h3{
+    color: #fff;
+    font-size: 27px;
+}
+
+.faq .container .tab p{
+    color: #fff;
+    font-size: 18px;
+    margin-left: 4.5rem;
+}
+
+.contact .row{
+    display: flex;
+    align-items: center;
+    background: var(--black);
+    gap: 1rem;
+}
+
+.contact .container h2{
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+}
+
+.contact .container p{
+    color: #fff;
+    font-size: 16px;
+    margin-left: 48rem;
+    font-family: "Young serif", sans-serif;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width:991px){
+
+    html{
+        font-size: 55%;
+    }
+    .header{
+        padding: 1.5rem 2rem;
+    }
+    
+    section{
+        padding: 2rem;
+    }
+    
+}
+
+@media (max-width:450px){
+
+    #menu-btn{
+        display: inline-block;
+    }
+
+    .header .nav{
+        position: absolute;
+        top: 100%; right: -100%;
+        background: #fff;
+        width: 30rem;
+        height: calc(100vh - 9.5rem);
+    }
+
+    .header .nav.active{
+        right: 0;
+    }
+
+    .header .nav a{
+        color: var(--black);
+        display: block;
+        margin: 2rem;
+        padding: .5rem;
+        font-size: 2rem;
+
+    }
+
+    .home{
+        background-position: left;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .home .content h3{
+        font-size: 5rem;
+    }
+
+    .home .content p{
+        font-size: 2rem;
+    }
+}
+
+
+@media (max-width:450){
+
+    html{
+        font-size: 50%;
+    }
+}
+  </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group 2 website</title>
+
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+<body>
+
+<header class="header">
+
+    <a href="#" class="logo">
+        <img src="logo.jpg" alt="">
+    </a>
+
+    <nav class="nav">
+       <a href="#home">Home</a>
+       <a href="#about">About</a>
+       <a href="#products">Products</a>
+       <a href="#faq">FAQ</a>
+       <a href="#contact">Contact</a>
+    </nav>
+    
+    <div class="icons">
+        <div class="fas fa-shopping-cart" id="cart-btn"></div>
+        <div class="fas fa-bars" id="menu-btn"></div>
+    </div>
+
+    <div class="cart-items-container">
+        <div class="cart-item">
+            <span class="fas fa-times"></span>
+            <img src="bracelet1.png" alt="">
+            <div class="content">
+                <h3>cart item 01</h3>
+                <div class="price">₱70.00/-</div>
+            </div>
+        </div>
+        <div class="cart-item">
+            <span class="fas fa-times"></span>
+            <img src="bracelet2.png" alt="">
+            <div class="content">
+                <h3>cart item 02</h3>
+                <div class="price">₱70.00/-</div>
+            </div>
+        </div>
+        <div class="cart-item">
+            <span class="fas fa-times"></span>
+            <img src="bracelet3.png" alt="">
+            <div class="content">
+                <h3>cart item 03</h3>
+                <div class="price">₱70.00/-</div>
+            </div>
+        </div>
+        <div class="cart-item">
+            <span class="fas fa-times"></span>
+            <img src="bracelet4.png" alt="">
+            <div class="content">
+                <h3>cart item 04</h3>
+                <div class="price">₱70.00/-</div>
+            </div>
+        </div>
+        <a href="#" class="btn">Checkout Now!</a>
+    </div>
+
+</header>
+
+<section class="home" id="home">
+    <div class="content">
+        <h3>Do you love arts and design?</h3>
+        <p>Our company promotes artistry and designing your very own bracelet!</p>
+        <a href="#products" class="btn">Get Yours Now!</a>
+    </div>
+
+</section>
+
+<section class="about" id="about">
+
+    <h1 class="heading"> <span>About</span> Us</h1>
+
+    <div class="row">
+
+    <div class="image">
+        <img src="homedesign3.png" alt="">
+    </div>
+    
+    <div class="content">
+        <h3>What distinguishes our product from others?</h3>
+        <p>Our artisan-crafted bracelets, intricately designed with unique symbols and charms, not only showcase a distinctive aesthetic but also offer a personalized touch through customizable options like engraving, ensuring each piece tells a meaningful story and stands as a testament to our commitment to quality, comfort, and individual expression.</p>
+    
+    </div>
+
+</section>
+
+<section class="products" id="products">
+
+    <h1 class="heading">Products</h1>
+    <div class="box-container">
+        
+        <div class="box">
+            <img src="product1.png" alt="">
+            <h3>Luxe Silver Elegance</h3>
+            <div class="price">₱6,999</div>
+            <a href="#" class="btn">add to cart</a>
+        </div>
+
+        <div class="box">
+            <img src="product2.png" alt="">
+            <h3>Platinum Charm</h3>
+            <div class="price">₱7,999</div>
+            <a href="#" class="btn">add to cart</a>
+        </div>
+
+        <div class="box">
+            <img src="product3.png" alt="">
+            <h3>Silver Haven</h3>
+            <div class="price">₱8,599</div>
+            <a href="#" class="btn">add to cart</a>
+        </div>
+
+        <div class="box">
+            <img src="product4.png" alt="">
+            <h3>Prestige Gleam</h3>
+            <div class="price">₱8,000</div>
+            <a href="#" class="btn">add to cart</a>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="faq" id="faq">
+
+    <div class="container">
+        <h1 class="heading"><span>FAQS</span></h1>
+        <div class="box-container">
+        <div class="tab">
+            <input type="radio" name="acc" id="acc1">
+            <label for="acc1">
+                <h2>01</h2>
+                <h3>What materials are commonly used in the production of bracelets?</h3>
+            </label>
+            <div class="content"><p> Our bracelets often use materials like metal, leather, beads, or gemstones.</p></div>
+        </div> &nbsp;
+
+        <div class="container">
+            <div class="tab">
+                <input type="radio" name="acc" id="acc2">
+                <label for="acc2">
+                    <h2>02</h2>
+                    <h3>How do I properly clean and maintain my bracelet to ensure longevity?</h3>
+                </label>
+                <div class="content"><p> Clean and maintain your bracelet according to its material; use a soft cloth for metal and avoid harsh chemicals.</p></div>
+            </div>
+
+        <div class="container">
+            <div class="tab">
+                <input type="radio" name="acc" id="acc3">
+                <label for="acc3">
+                    <h2>03</h2>
+                    <h3>Can I wear my bracelet in water, or should I remove it before showering or 
+                        swimming?</h3>
+                </label>
+                <div class="content"><p>All of our bracelets can withstand water, but it's safe to remove them before showering or swimming.</p></div>
+            </div>
+
+            <div class="container">
+                <div class="tab">
+                    <input type="radio" name="acc" id="acc4">
+                    <label for="acc4">
+                        <h2>04</h2>
+                        <h3>Do you offer custom sizing for bracelets, or can they be adjusted to fit different wrist sizes?</h3>
+                    </label>
+                    <div class="content"><p>Some of our bracelets offer custom sizing, and many can be adjusted for different wrist sizes.</p></div>
+                </div>
+
+                <div class="container">
+                    <div class="tab">
+                        <input type="radio" name="acc" id="acc5">
+                        <label for="acc5">
+                            <h2>05</h2>
+                            <h3>Are there any specific care tips or precautions I should take to keep my bracelet in good condition over time?</h3>
+                        </label>
+                        <div class="content"><p>To keep your bracelet in top condition, avoid harsh chemicals and moisture. Use a soft cloth for cleaning, and follow any care instructions, especially for gemstones, to maintain its longevity and appearance.</p></div>
+                    </div>
+
+    </div>
+</section>
+
+
+<section class="contact" id="contact">
+    <div class="container">
+        <h1 class="heading"><span>CONTACT US</span></h1>
+
+        <h2>If you have further questions feel free to message us through our emails!</h2>
+        &nbsp;
+        <p>ap.gabrieladrianne.chua@apecschools.edu.ph</p>
+        &nbsp;
+        <p>ap.ezekiel.santiago@apecschools.edu.ph</p>
+        &nbsp;
+        <p>ap.angelajammiebeatrice.laus@apecschools.edu.ph</p>
+        &nbsp;
+        <p>ap.lucasandre.ramirez@apecschools.edu.ph</p>
+        </div>
+
+
+
+</section>
+
+
+
+
+<script
+  let navbar = document.querySelector('.nav');
+
+document.querySelector('#menu-btn').onclick = () =>{
+    navbar.classList.toggle('active');
+    cartItem.classList.remove('active');
+}
+
+let cartItem = document.querySelector('.cart-items-container');
+
+document.querySelector('#cart-btn').onclick = () =>{
+    cartItem.classList.toggle('active');
+    navbar.classList.remove('active');
+}
+
+window.onscroll = () =>{
+    navbar.classList.remove('active');
+    cartItem.classList.remove('active');
+}
+  script>
+
+</body>
+</html>
